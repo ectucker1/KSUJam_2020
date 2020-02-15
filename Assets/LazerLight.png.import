@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wallFront.png-1552c4d04dd1d05c40d9457c2084fb08.stex"
+path="res://.import/LazerLight.png-7b957f0ca53137c3e49eeefc05a62f16.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/wallFront.png"
-dest_files=[ "res://.import/wallFront.png-1552c4d04dd1d05c40d9457c2084fb08.stex" ]
+source_file="res://Assets/LazerLight.png"
+dest_files=[ "res://.import/LazerLight.png-7b957f0ca53137c3e49eeefc05a62f16.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
