@@ -14,16 +14,24 @@ const JUMP_SPEED = 200.0
 const COYOTE_TIME = 0.1
 const INPUT_RECALL_TIME = 0.1
 
+var dagger_scene := preload("res://Core/Dagger.tscn")
+
+var dagger: KinematicBody2D = null
+
 var input_direction := Vector2.ZERO
+
 var jump_last_pressed := INF
+var throw_last_pressed := INF
+var recall_last_pressed := INF
 
 var velocity := Vector2.ZERO
 
-var last_on_ground = 0.0
+var last_on_ground := 0.0
 
 func _physics_process(delta: float):
 	# Advance input timers
 	jump_last_pressed += delta
+	throw_last_pressed += delta
 	
 	# Check ground
 	var on_ground := is_on_floor()
@@ -60,6 +68,22 @@ func _physics_process(delta: float):
 		velocity.y = -JUMP_SPEED
 		jump_last_pressed = INF
 	
+	# Throwing time
+	if throw_last_pressed < INPUT_RECALL_TIME:
+		if dagger == null:
+			dagger = dagger_scene.instance()
+			dagger.throw_direction = (get_global_mouse_position() - global_position).normalized()
+			dagger.global_position = global_position
+			get_parent().add_child(dagger)
+			throw_last_pressed = INF
+	
+	# Recall dagger
+	if recall_last_pressed < INPUT_RECALL_TIME:
+		if dagger != null:
+			dagger.queue_free()
+			dagger = null
+			recall_last_pressed = INF
+	
 	# Actually move
 	move_and_slide(velocity, Vector2.UP, true, 4, PI / 4, true)
 
@@ -76,3 +100,8 @@ func _input(event):
 	
 	if event.is_action_pressed("move_jump"):
 		jump_last_pressed = 0.0
+	
+	if event.is_action_pressed("move_throw"):
+		throw_last_pressed = 0.0
+	if event.is_action_pressed("move_recall"):
+		recall_last_pressed = 0.0

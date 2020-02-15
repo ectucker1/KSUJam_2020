@@ -11,6 +11,8 @@ extents = Vector2( 141.026, 10 )
 position = Vector2( -7.27969, -36.7737 )
 
 [node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 __meta__ = {
 "_edit_lock_": true
 }
