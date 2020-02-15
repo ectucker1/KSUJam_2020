@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Core/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/Sunsetseeker.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Sfx/Jump.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sfx/Warp.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Sfx/Land.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sfx/Recall.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Air"
@@ -189,14 +190,11 @@ tracks/1/keys = {
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 4, -32 )
+position = Vector2( 4, -8 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 5
-frame = 8
-__meta__ = {
-"_edit_lock_": true
-}
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Air = SubResource( 1 )
@@ -211,36 +209,30 @@ parameters/Fire/active = false
 parameters/Movement/playback = SubResource( 18 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -24 )
 shape = SubResource( 19 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -8 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_lock_": true
-}
+limit_left = 0
+limit_top = 32
+limit_right = 1600
+limit_bottom = 1568
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0, -26 )
+position = Vector2( 0, -2 )
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
 autoplay = "Breathe"
 anims/Breathe = SubResource( 20 )
 
 [node name="ArmSpawn" type="Position2D" parent="."]
-position = Vector2( 9, -32 )
+position = Vector2( 9, -8 )
 
 [node name="Effects" type="Node2D" parent="."]
+position = Vector2( 0, 24 )
 
 [node name="Fire" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource( 4 )
@@ -258,3 +250,6 @@ stream = ExtResource( 7 )
 [node name="Land" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource( 8 )
 volume_db = 3.029
+
+[node name="Recall" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource( 9 )

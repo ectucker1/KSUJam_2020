@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floorCracked.png-1b459408c9616d5c77a1b195d990ceb9.stex"
+path="res://.import/background.png-c6e0edb6ae00a576ddf31b14f0c4bf17.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/floorCracked.png"
-dest_files=[ "res://.import/floorCracked.png-1b459408c9616d5c77a1b195d990ceb9.stex" ]
+source_file="res://Assets/background.png"
+dest_files=[ "res://.import/background.png-c6e0edb6ae00a576ddf31b14f0c4bf17.stex" ]
 
 [params]
 
@@ -19,8 +19,8 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
+flags/repeat=2
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,15 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Core/Dagger.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/shootyHand.png" type="Texture" id=2]
 [ext_resource path="res://Assets/DefaultLight.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sfx/Bounce.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sfx/Flip.wav" type="AudioStream" id=5]
+[ext_resource path="res://Core/ReverseRotation.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 2.5 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Dead"
 loop = true
 tracks/0/type = "value"
@@ -25,8 +26,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Shoot"
+[sub_resource type="Animation" id=3]
 length = 0.45
 loop = true
 step = 0.05
@@ -82,6 +82,10 @@ shape = SubResource( 1 )
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 32
+limit_right = 1600
+limit_bottom = 1568
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -1, -0.5 )
@@ -91,8 +95,8 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Shoot"
-anims/Dead = SubResource( 3 )
-anims/Shoot = SubResource( 2 )
+anims/Dead = SubResource( 2 )
+anims/Shoot = SubResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 3 )
@@ -111,3 +115,18 @@ stream = ExtResource( 4 )
 [node name="Flip" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource( 5 )
 volume_db = -4.039
+
+[node name="OverlapCheck" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Down" type="RayCast2D" parent="OverlapCheck"]
+cast_to = Vector2( 0, 24 )
+
+[node name="Up" type="RayCast2D" parent="OverlapCheck"]
+cast_to = Vector2( 0, -24 )
+
+[node name="Right" type="RayCast2D" parent="OverlapCheck"]
+cast_to = Vector2( 8, 0 )
+
+[node name="Left" type="RayCast2D" parent="OverlapCheck"]
+cast_to = Vector2( -8, 0 )
