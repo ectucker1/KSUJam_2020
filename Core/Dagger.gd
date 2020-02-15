@@ -23,6 +23,7 @@ func _physics_process(delta: float):
 	
 	# Actually move
 	move_and_slide(velocity, Vector2.UP, true, 1, PI / 8, true)
+	rotation = velocity.angle()
 	
 	# Bounce and disable on hit
 	if enabled:

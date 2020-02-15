@@ -72,14 +72,12 @@ func _physics_process(delta: float):
 	# Throwing time
 	if throw_last_pressed < INPUT_RECALL_TIME:
 		if dagger == null:
-			dagger = dagger_scene.instance()
-			dagger.throw_direction = (get_global_mouse_position() - global_position).normalized()
-			dagger.global_position = global_position
-			get_parent().add_child(dagger)
-			dagger.get_node("Camera").current = true
+			$AnimationPlayer.play("Shoot")
+			$AnimationPlayer.queue("Idle")
 			throw_last_pressed = INF
 			jump_last_pressed = INF
 			recall_last_pressed = INF
+			input_direction = Vector2.ZERO
 	
 	# Recall dagger
 	if recall_last_pressed < INPUT_RECALL_TIME:
@@ -91,6 +89,13 @@ func _physics_process(delta: float):
 	
 	# Actually move
 	move_and_slide(velocity, Vector2.UP, true, 4, PI / 4, true)
+
+func fire_hand():
+	dagger = dagger_scene.instance()
+	dagger.throw_direction = (get_global_mouse_position() - global_position).normalized()
+	dagger.global_position = global_position
+	get_parent().add_child(dagger)
+	dagger.get_node("Camera").current = true
 
 func _input(event):
 	# If not currently controlling the dagger
