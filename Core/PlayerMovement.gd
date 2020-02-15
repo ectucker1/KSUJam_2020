@@ -5,7 +5,7 @@ const GRAVITY := 500.0
 const GROUND_ACC := 70000.0
 const GROUND_DEC := 40000.0
 
-const AIR_ACC := 400.0
+const AIR_ACC := 2000.0
 const AIR_DEC := 0.0
 
 const MAX_SPEED := 170.0
@@ -134,7 +134,7 @@ func _physics_process(delta: float):
 			$Effects/Recall.play()
 	
 	# Actually move
-	move_and_slide(velocity, Vector2.UP, true, 4, PI / 4, true)
+	move_and_slide_with_snap(velocity, Vector2(0.0, 3.0), Vector2.UP, true, 4, PI / 4, true)
 
 func fire_hand():
 	dagger = dagger_scene.instance()
