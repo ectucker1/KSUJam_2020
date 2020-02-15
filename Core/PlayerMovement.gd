@@ -113,6 +113,7 @@ func _physics_process(delta: float):
 			dagger = null
 			get_node("Camera").current = true
 			recall_last_pressed = INF
+			$Effects/Recall.play()
 	
 	# Actually move
 	move_and_slide(velocity, Vector2.UP, true, 4, PI / 4, true)
