@@ -18,6 +18,7 @@ var dagger_scene := preload("res://Core/Dagger.tscn")
 
 var dagger: KinematicBody2D = null
 
+var flipped := false
 var input_direction := Vector2.ZERO
 
 var jump_last_pressed := INF
@@ -96,8 +97,14 @@ func _input(event):
 	if dagger == null:
 		if event.is_action_pressed("move_right"):
 			input_direction.x = 1
+			flipped = false
+			$Sprite.position.x = 4.0
+			$Sprite.scale.x = 1.0
 		if event.is_action_pressed("move_left"):
 			input_direction.x = -1
+			flipped = true
+			$Sprite.position.x = -4.0
+			$Sprite.scale.x = -1.0
 		
 		if event.is_action_released("move_right") and input_direction.x > 0:
 			input_direction.x = 0
