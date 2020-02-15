@@ -2,13 +2,13 @@ extends KinematicBody2D
 
 const GRAVITY := 300.0
 
-const GROUND_ACC := 600.0
-const GROUND_DEC := 400.0
+const GROUND_ACC := 70000.0
+const GROUND_DEC := 40000.0
 
-const AIR_ACC := 250.0
+const AIR_ACC := 400.0
 const AIR_DEC := 0.0
 
-const MAX_SPEED := 200.0
+const MAX_SPEED := 170.0
 const JUMP_SPEED = 200.0
 
 const COYOTE_TIME = 0.1
@@ -17,6 +17,9 @@ const INPUT_RECALL_TIME = 0.1
 var dagger_scene := preload("res://Core/Dagger.tscn")
 
 var dagger: KinematicBody2D = null
+
+onready var anim_tree := get_node("AnimationTree")
+onready var anim_state = anim_tree["parameters/Movement/playback"]
 
 var flipped := false
 var input_direction := Vector2.ZERO
@@ -27,7 +30,25 @@ var recall_last_pressed := INF
 
 var velocity := Vector2.ZERO
 
+var on_ground := true
 var last_on_ground := 0.0
+
+func _ready():
+	anim_tree.active = true
+	anim_state.start("Idle")
+
+func _process(delta):
+	# Determine animation state
+	if last_on_ground < COYOTE_TIME:
+		if input_direction.x != 0.0:
+			if anim_state.get_current_node() != "Run":
+				anim_state.travel("Run")
+		else:
+			if anim_state.get_current_node() != "Idle":
+				anim_state.travel("Idle")
+	else:
+		if anim_state.get_current_node() != "Air":
+			anim_state.travel("Air")
 
 func _physics_process(delta: float):
 	# Advance input timers
@@ -35,7 +56,7 @@ func _physics_process(delta: float):
 	throw_last_pressed += delta
 	
 	# Check ground
-	var on_ground := is_on_floor()
+	on_ground = is_on_floor()
 	if on_ground:
 		last_on_ground = 0.0
 	else:
@@ -72,8 +93,7 @@ func _physics_process(delta: float):
 	# Throwing time
 	if throw_last_pressed < INPUT_RECALL_TIME:
 		if dagger == null:
-			$AnimationPlayer.play("Shoot")
-			$AnimationPlayer.queue("Idle")
+			anim_tree["parameters/Fire/active"] = true
 			throw_last_pressed = INF
 			jump_last_pressed = INF
 			recall_last_pressed = INF
@@ -92,8 +112,8 @@ func _physics_process(delta: float):
 
 func fire_hand():
 	dagger = dagger_scene.instance()
-	dagger.throw_direction = (get_global_mouse_position() - global_position).normalized()
-	dagger.global_position = global_position
+	dagger.throw_direction = (get_global_mouse_position() - $ArmSpawn.global_position).normalized()
+	dagger.global_position = $ArmSpawn.global_position
 	get_parent().add_child(dagger)
 	dagger.get_node("Camera").current = true
 
