@@ -1,10 +1,15 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Core/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/Sunsetseeker.png" type="Texture" id=2]
 [ext_resource path="res://Assets/DefaultLight.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sfx/Fire.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sfx/Footsteps.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sfx/Jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sfx/Warp.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sfx/Land.wav" type="AudioStream" id=8]
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=1]
 resource_name = "Air"
 length = 0.1
 tracks/0/type = "value"
@@ -20,8 +25,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -36,7 +40,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Run"
 length = 0.6
 loop = true
@@ -53,9 +57,25 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 5, 6, 7, 8 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath("Effects/Step")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "Shoot"
+[sub_resource type="Animation" id=4]
 length = 0.55
 step = 0.05
 tracks/0/type = "value"
@@ -90,50 +110,50 @@ animation = "Shoot"
 
 [sub_resource type="AnimationNodeOneShot" id=6]
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Air"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
-[sub_resource type="AnimationNodeStateMachine" id=7]
-states/Air/node = SubResource( 15 )
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Air/node = SubResource( 7 )
 states/Air/position = Vector2( 340.75, 245.5 )
-states/Idle/node = SubResource( 10 )
+states/Idle/node = SubResource( 8 )
 states/Idle/position = Vector2( 341.5, 99.625 )
-states/Run/node = SubResource( 11 )
+states/Run/node = SubResource( 9 )
 states/Run/position = Vector2( 657.5, 90.6563 )
-transitions = [ "Idle", "Run", SubResource( 16 ), "Idle", "Air", SubResource( 17 ), "Run", "Air", SubResource( 19 ), "Air", "Idle", SubResource( 20 ), "Air", "Run", SubResource( 21 ), "Run", "Idle", SubResource( 22 ) ]
+transitions = [ "Idle", "Run", SubResource( 10 ), "Idle", "Air", SubResource( 11 ), "Run", "Air", SubResource( 12 ), "Air", "Idle", SubResource( 13 ), "Air", "Run", SubResource( 14 ), "Run", "Idle", SubResource( 15 ) ]
 graph_offset = Vector2( -84, 23.3233 )
 
-[sub_resource type="AnimationNodeBlendTree" id=8]
+[sub_resource type="AnimationNodeBlendTree" id=17]
 graph_offset = Vector2( -749.5, 24.25 )
 nodes/Animation/node = SubResource( 5 )
 nodes/Animation/position = Vector2( -140, 280 )
 nodes/Fire/node = SubResource( 6 )
 nodes/Fire/position = Vector2( 100, 150 )
-nodes/Movement/node = SubResource( 7 )
+nodes/Movement/node = SubResource( 16 )
 nodes/Movement/position = Vector2( -220, 20 )
 node_connections = [ "output", 0, "Fire", "Fire", 0, "Movement", "Fire", 1, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 8, 24 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -144,26 +164,26 @@ position = Vector2( 4, -32 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 5
-frame = 6
+frame = 8
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Air = SubResource( 14 )
-anims/Idle = SubResource( 1 )
-anims/Run = SubResource( 4 )
-anims/Shoot = SubResource( 2 )
+anims/Air = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Run = SubResource( 3 )
+anims/Shoot = SubResource( 4 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 8 )
+tree_root = SubResource( 17 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/Fire/active = false
-parameters/Movement/playback = SubResource( 9 )
+parameters/Movement/playback = SubResource( 18 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -24 )
-shape = SubResource( 3 )
+shape = SubResource( 19 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -185,3 +205,22 @@ __meta__ = {
 
 [node name="ArmSpawn" type="Position2D" parent="."]
 position = Vector2( 9, -32 )
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="Fire" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource( 4 )
+
+[node name="Step" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource( 5 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource( 6 )
+volume_db = 2.524
+
+[node name="Warp" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource( 7 )
+
+[node name="Land" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource( 8 )
+volume_db = 3.029

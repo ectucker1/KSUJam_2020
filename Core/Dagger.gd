@@ -35,6 +35,8 @@ func _physics_process(delta: float):
 			velocity *= STOP_SCALE
 			enabled = false
 			grav_dir = 1.0
+			$Effects/Bounce.play()
+			$Sprite/AnimationPlayer.play("Dead")
 	
 	# Stop when velocity is slow enough
 	if velocity.length() < MIN_SPEED:
@@ -49,3 +51,4 @@ func _physics_process(delta: float):
 func _input(event):
 	if event.is_action_pressed("move_throw") and enabled:
 		grav_dir *= -1.0
+		$Effects/Flip.play()

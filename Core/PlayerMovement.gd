@@ -58,6 +58,8 @@ func _physics_process(delta: float):
 	# Check ground
 	on_ground = is_on_floor()
 	if on_ground:
+		if last_on_ground > 0.2:
+			$Effects/Land.play()
 		last_on_ground = 0.0
 	else:
 		last_on_ground += delta
@@ -87,6 +89,7 @@ func _physics_process(delta: float):
 	
 	# Jump code
 	if jump_last_pressed < INPUT_RECALL_TIME and last_on_ground < COYOTE_TIME:
+		$Effects/Jump.play()
 		velocity.y = -JUMP_SPEED
 		jump_last_pressed = INF
 	
@@ -116,6 +119,7 @@ func fire_hand():
 	dagger.global_position = $ArmSpawn.global_position
 	get_parent().add_child(dagger)
 	dagger.get_node("Camera").current = true
+	$Effects/Fire.play()
 
 func _input(event):
 	# If not currently controlling the dagger
@@ -149,4 +153,6 @@ func _input(event):
 			global_position = dagger.global_position
 			dagger.queue_free()
 			dagger = null
+			velocity = Vector2.ZERO
 			get_node("Camera").current = true
+			$Effects/Warp.play()
