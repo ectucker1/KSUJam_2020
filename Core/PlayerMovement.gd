@@ -64,6 +64,10 @@ func _physics_process(delta: float):
 	else:
 		last_on_ground += delta
 	
+	# Bump head
+	if is_on_ceiling() and velocity.y < 0:
+		velocity.y = 0.0
+	
 	# Apply directional input
 	if on_ground:
 		velocity.x += input_direction.x * GROUND_ACC * delta
@@ -150,9 +154,22 @@ func _input(event):
 			recall_last_pressed = 0.0
 		
 		if event.is_action_pressed("move_warp"):
-			global_position = dagger.global_position
+			var offset = Vector2()
+			for cast in dagger.get_node("OverlapCheck").get_children():
+				cast.enabled = true
+				cast.force_raycast_update()
+				if cast.is_colliding():
+					var point = cast.get_collision_point()
+					offset += point - dagger.global_position
+			global_position = dagger.global_position - Vector2(8 * sign(offset.y), 24 * sign(offset.y)) + offset
+			#print(offset)
 			dagger.queue_free()
 			dagger = null
 			velocity = Vector2.ZERO
 			get_node("Camera").current = true
 			$Effects/Warp.play()
+
+
+func _on_body_shape_entered(body_id, body, body_shape, area_shape):
+	if body is StaticBody2D:
+		pass
