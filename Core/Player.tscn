@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Core/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/Sunsetseeker.png" type="Texture" id=2]
@@ -25,6 +25,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Foward"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -115,6 +130,9 @@ animation = "Shoot"
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Air"
 
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Foward"
+
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Idle"
 
@@ -133,18 +151,26 @@ animation = "Run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
 [sub_resource type="AnimationNodeStateMachine" id=16]
 states/Air/node = SubResource( 7 )
 states/Air/position = Vector2( 340.75, 245.5 )
+states/Foward/node = SubResource( 23 )
+states/Foward/position = Vector2( 126.5, -46.1767 )
 states/Idle/node = SubResource( 8 )
-states/Idle/position = Vector2( 341.5, 99.625 )
+states/Idle/position = Vector2( 303.5, 91.3907 )
 states/Run/node = SubResource( 9 )
 states/Run/position = Vector2( 657.5, 90.6563 )
-transitions = [ "Idle", "Run", SubResource( 10 ), "Idle", "Air", SubResource( 11 ), "Run", "Air", SubResource( 12 ), "Air", "Idle", SubResource( 13 ), "Air", "Run", SubResource( 14 ), "Run", "Idle", SubResource( 15 ) ]
-graph_offset = Vector2( -84, 23.3233 )
+transitions = [ "Idle", "Run", SubResource( 10 ), "Idle", "Air", SubResource( 11 ), "Run", "Air", SubResource( 12 ), "Air", "Idle", SubResource( 13 ), "Air", "Run", SubResource( 14 ), "Run", "Idle", SubResource( 15 ), "Air", "Foward", SubResource( 24 ), "Idle", "Foward", SubResource( 25 ), "Run", "Foward", SubResource( 26 ) ]
+graph_offset = Vector2( -477, -116.677 )
 
 [sub_resource type="AnimationNodeBlendTree" id=17]
-graph_offset = Vector2( -749.5, 24.25 )
+graph_offset = Vector2( -430.5, -24.5 )
 nodes/Animation/node = SubResource( 5 )
 nodes/Animation/position = Vector2( -140, 280 )
 nodes/Fire/node = SubResource( 6 )
@@ -239,10 +265,11 @@ position = Vector2( 4, -8 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 5
-frame = 3
+frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Air = SubResource( 1 )
+anims/Foward = SubResource( 22 )
 anims/Idle = SubResource( 2 )
 anims/Run = SubResource( 3 )
 anims/Shoot = SubResource( 4 )

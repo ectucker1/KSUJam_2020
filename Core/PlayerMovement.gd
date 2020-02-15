@@ -33,6 +33,8 @@ var velocity := Vector2.ZERO
 var on_ground := true
 var last_on_ground := 0.0
 
+var elevator: Node2D = null
+
 func _ready():
 	anim_tree.active = true
 	anim_state.start("Idle")
@@ -49,6 +51,22 @@ func _process(delta):
 	else:
 		if anim_state.get_current_node() != "Air":
 			anim_state.travel("Air")
+	
+	if elevator != null:
+		if abs(elevator.global_position.x - global_position.x) > 0.5:
+			input_direction.x = sign(elevator.global_position.x - global_position.x)
+		else:
+			input_direction.x = 0.0
+			set_physics_process(false)
+			anim_state.travel("Foward")
+			global_position.y = elevator.get_node("Door").global_position.y + 9
+			if has_node("Camera"):
+				var cam = get_node("Camera")
+				var temp_pos = cam.global_position
+				remove_child(cam)
+				get_parent().add_child(cam)
+				cam.set_owner(get_parent())
+				cam.global_position = temp_pos
 
 func _physics_process(delta: float):
 	# Advance input timers
@@ -179,6 +197,10 @@ func kill():
 		set_process(false)
 		set_physics_process(false)
 		set_process_input(false)
+
+func elevator(elevator: Node2D):
+	set_process_input(false)
+	self.elevator = elevator
 
 func restart():
 	get_tree().reload_current_scene()
