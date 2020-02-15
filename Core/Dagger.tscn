@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Core/Dagger.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/shootyHand.png" type="Texture" id=2]
@@ -43,6 +43,35 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Breathe"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.25, 0.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.7, 1.0 ]
+}
+
 [node name="Dagger" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -67,6 +96,11 @@ anims/Shoot = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 3 )
+texture_scale = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+autoplay = "Breathe"
+anims/Breathe = SubResource( 4 )
 
 [node name="Effects" type="Node2D" parent="."]
 

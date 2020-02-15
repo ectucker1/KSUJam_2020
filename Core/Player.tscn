@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Core/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/Sunsetseeker.png" type="Texture" id=2]
@@ -156,6 +156,35 @@ node_connections = [ "output", 0, "Fire", "Fire", 0, "Movement", "Fire", 1, "Ani
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 8, 24 )
 
+[sub_resource type="Animation" id=20]
+resource_name = "Breathe"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.8, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.9, 1.0 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -182,6 +211,7 @@ parameters/Fire/active = false
 parameters/Movement/playback = SubResource( 18 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, -24 )
 shape = SubResource( 19 )
 __meta__ = {
@@ -202,6 +232,10 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+autoplay = "Breathe"
+anims/Breathe = SubResource( 20 )
 
 [node name="ArmSpawn" type="Position2D" parent="."]
 position = Vector2( 9, -32 )

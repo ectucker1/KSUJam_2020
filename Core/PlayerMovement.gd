@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const GRAVITY := 300.0
+const GRAVITY := 500.0
 
 const GROUND_ACC := 70000.0
 const GROUND_DEC := 40000.0
@@ -9,7 +9,7 @@ const AIR_ACC := 400.0
 const AIR_DEC := 0.0
 
 const MAX_SPEED := 170.0
-const JUMP_SPEED = 200.0
+const JUMP_SPEED = 300.0
 
 const COYOTE_TIME = 0.1
 const INPUT_RECALL_TIME = 0.1

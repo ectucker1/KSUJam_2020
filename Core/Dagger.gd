@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const GRAVITY := 200.0
+const GRAVITY := 500.0
 
 const THROW_SPEED := 400.0
 const STOP_SCALE := 0.4

@@ -32,7 +32,6 @@ position = Vector2( 18.3379, 221.655 )
 [node name="demo" parent="." instance=ExtResource( 2 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0.278431, 0.258824, 0.901961, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
