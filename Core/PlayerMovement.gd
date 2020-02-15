@@ -2,13 +2,13 @@ extends KinematicBody2D
 
 const GRAVITY := 300.0
 
-const GROUND_ACC := 300.0
-const GROUND_DEC := 200.0
+const GROUND_ACC := 600.0
+const GROUND_DEC := 400.0
 
-const AIR_ACC := 150.0
+const AIR_ACC := 250.0
 const AIR_DEC := 0.0
 
-const MAX_SPEED := 70.0
+const MAX_SPEED := 200.0
 const JUMP_SPEED = 200.0
 
 const COYOTE_TIME = 0.1
@@ -60,11 +60,11 @@ func _physics_process(delta: float):
 	
 	# Apply gravity
 	velocity.y += GRAVITY * delta
-	if on_ground && velocity.y > 0.0:
+	if on_ground and velocity.y > 0.0:
 		velocity.y = 0.0
 	
 	# Jump code
-	if jump_last_pressed < INPUT_RECALL_TIME && last_on_ground < COYOTE_TIME:
+	if jump_last_pressed < INPUT_RECALL_TIME and last_on_ground < COYOTE_TIME:
 		velocity.y = -JUMP_SPEED
 		jump_last_pressed = INF
 	
@@ -75,33 +75,46 @@ func _physics_process(delta: float):
 			dagger.throw_direction = (get_global_mouse_position() - global_position).normalized()
 			dagger.global_position = global_position
 			get_parent().add_child(dagger)
+			dagger.get_node("Camera").current = true
 			throw_last_pressed = INF
+			jump_last_pressed = INF
+			recall_last_pressed = INF
 	
 	# Recall dagger
 	if recall_last_pressed < INPUT_RECALL_TIME:
 		if dagger != null:
 			dagger.queue_free()
 			dagger = null
+			get_node("Camera").current = true
 			recall_last_pressed = INF
 	
 	# Actually move
 	move_and_slide(velocity, Vector2.UP, true, 4, PI / 4, true)
 
 func _input(event):
-	if event.is_action_pressed("move_right"):
-		input_direction.x = 1
-	if event.is_action_pressed("move_left"):
-		input_direction.x = -1
-	
-	if event.is_action_released("move_right") && input_direction.x > 0:
-		input_direction.x = 0
-	if event.is_action_released("move_left") && input_direction.x < 0:
-		input_direction.x = 0
-	
-	if event.is_action_pressed("move_jump"):
-		jump_last_pressed = 0.0
-	
-	if event.is_action_pressed("move_throw"):
-		throw_last_pressed = 0.0
-	if event.is_action_pressed("move_recall"):
-		recall_last_pressed = 0.0
+	# If not currently controlling the dagger
+	if dagger == null:
+		if event.is_action_pressed("move_right"):
+			input_direction.x = 1
+		if event.is_action_pressed("move_left"):
+			input_direction.x = -1
+		
+		if event.is_action_released("move_right") and input_direction.x > 0:
+			input_direction.x = 0
+		if event.is_action_released("move_left") and input_direction.x < 0:
+			input_direction.x = 0
+		
+		if event.is_action_pressed("move_jump"):
+			jump_last_pressed = 0.0
+		
+		if event.is_action_pressed("move_throw"):
+			throw_last_pressed = 0.0
+	else:
+		if event.is_action_pressed("move_recall"):
+			recall_last_pressed = 0.0
+		
+		if event.is_action_pressed("move_warp"):
+			global_position = dagger.global_position
+			dagger.queue_free()
+			dagger = null
+			get_node("Camera").current = true
