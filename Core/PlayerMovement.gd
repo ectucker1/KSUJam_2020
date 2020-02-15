@@ -170,7 +170,15 @@ func _input(event):
 			get_node("Camera").current = true
 			$Effects/Warp.play()
 
+func kill():
+	if is_processing():
+		anim_state.travel("Idle")
+		$Sprite.self_modulate = Color.black
+		$Effects/Death.play()
+		$Light2D/AnimationPlayer.play("Die")
+		set_process(false)
+		set_physics_process(false)
+		set_process_input(false)
 
-func _on_body_shape_entered(body_id, body, body_shape, area_shape):
-	if body is StaticBody2D:
-		pass
+func restart():
+	get_tree().reload_current_scene()
