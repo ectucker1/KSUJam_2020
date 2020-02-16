@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Maps/maintenance.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Core/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Lazer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Core/Effects.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/Elevator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stages/DroneDown.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,7 +13,7 @@
 position = Vector2( 0.794434, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 250.908, 1208.77 )
+position = Vector2( 1312.2, 514.812 )
 
 [node name="Lazer1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 381, 1184 )
@@ -35,3 +37,11 @@ position = Vector2( 449, 1251 )
 rotation = 1.5708
 
 [node name="Effects" parent="." instance=ExtResource( 4 )]
+
+[node name="Elevator" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1192, 512 )
+next = "res://TestStage.tscn"
+
+[node name="Drone" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1374, 550 )
+dist = Vector2( 0, 256 )

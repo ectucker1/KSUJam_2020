@@ -5,7 +5,7 @@ const GRAVITY := 500.0
 const GROUND_ACC := 70000.0
 const GROUND_DEC := 40000.0
 
-const AIR_ACC := 400.0
+const AIR_ACC := 2000.0
 const AIR_DEC := 0.0
 
 const MAX_SPEED := 170.0
@@ -33,6 +33,8 @@ var velocity := Vector2.ZERO
 var on_ground := true
 var last_on_ground := 0.0
 
+var elevator: Node2D = null
+
 func _ready():
 	anim_tree.active = true
 	anim_state.start("Idle")
@@ -49,6 +51,22 @@ func _process(delta):
 	else:
 		if anim_state.get_current_node() != "Air":
 			anim_state.travel("Air")
+	
+	if elevator != null:
+		if abs(elevator.global_position.x - global_position.x) > 0.5:
+			input_direction.x = sign(elevator.global_position.x - global_position.x)
+		else:
+			input_direction.x = 0.0
+			set_physics_process(false)
+			anim_state.travel("Foward")
+			global_position.y = elevator.get_node("Door").global_position.y + 9
+			if has_node("Camera"):
+				var cam = get_node("Camera")
+				var temp_pos = cam.global_position
+				remove_child(cam)
+				get_parent().add_child(cam)
+				cam.set_owner(get_parent())
+				cam.global_position = temp_pos
 
 func _physics_process(delta: float):
 	# Advance input timers
@@ -116,7 +134,7 @@ func _physics_process(delta: float):
 			$Effects/Recall.play()
 	
 	# Actually move
-	move_and_slide(velocity, Vector2.UP, true, 4, PI / 4, true)
+	move_and_slide_with_snap(velocity, Vector2(0.0, 3.0), Vector2.UP, true, 4, PI / 4, true)
 
 func fire_hand():
 	dagger = dagger_scene.instance()
@@ -179,6 +197,10 @@ func kill():
 		set_process(false)
 		set_physics_process(false)
 		set_process_input(false)
+
+func elevator(elevator: Node2D):
+	set_process_input(false)
+	self.elevator = elevator
 
 func restart():
 	get_tree().reload_current_scene()
