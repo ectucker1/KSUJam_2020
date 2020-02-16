@@ -200,6 +200,7 @@ func kill():
 		anim_state.travel("Idle")
 		$Sprite.self_modulate = Color.black
 		$Effects/Death.play()
+		$Effects/DeathPart2.play()
 		$Light2D/AnimationPlayer.play("Die")
 		set_process(false)
 		set_physics_process(false)

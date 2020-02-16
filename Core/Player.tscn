@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Core/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/Sunsetseeker.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Sfx/Recall.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Sfx/Death.wav" type="AudioStream" id=10]
 [ext_resource path="res://Core/BoundCamera.gd" type="Script" id=11]
+[ext_resource path="res://Assets/Sfx/DeathEffect.wav" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Air"
@@ -28,7 +29,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=2]
 resource_name = "Foward"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -43,7 +44,7 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -58,8 +59,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Run"
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 step = 0.05
@@ -93,7 +93,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.55
 step = 0.05
 tracks/0/type = "value"
@@ -123,26 +123,22 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Shoot"
 
-[sub_resource type="AnimationNodeOneShot" id=6]
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Air"
-
-[sub_resource type="AnimationNodeAnimation" id=23]
-animation = "Foward"
+[sub_resource type="AnimationNodeOneShot" id=7]
 
 [sub_resource type="AnimationNodeAnimation" id=8]
-animation = "Idle"
+animation = "Air"
 
 [sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Foward"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
@@ -152,41 +148,44 @@ animation = "Run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
-[sub_resource type="AnimationNodeStateMachine" id=16]
-states/Air/node = SubResource( 7 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachine" id=21]
+states/Air/node = SubResource( 8 )
 states/Air/position = Vector2( 340.75, 245.5 )
-states/Foward/node = SubResource( 23 )
+states/Foward/node = SubResource( 9 )
 states/Foward/position = Vector2( 126.5, -46.1767 )
-states/Idle/node = SubResource( 8 )
+states/Idle/node = SubResource( 10 )
 states/Idle/position = Vector2( 303.5, 91.3907 )
-states/Run/node = SubResource( 9 )
+states/Run/node = SubResource( 11 )
 states/Run/position = Vector2( 657.5, 90.6563 )
-transitions = [ "Idle", "Run", SubResource( 10 ), "Idle", "Air", SubResource( 11 ), "Run", "Air", SubResource( 12 ), "Air", "Idle", SubResource( 13 ), "Air", "Run", SubResource( 14 ), "Run", "Idle", SubResource( 15 ), "Air", "Foward", SubResource( 24 ), "Idle", "Foward", SubResource( 25 ), "Run", "Foward", SubResource( 26 ) ]
+transitions = [ "Idle", "Run", SubResource( 12 ), "Idle", "Air", SubResource( 13 ), "Run", "Air", SubResource( 14 ), "Air", "Idle", SubResource( 15 ), "Air", "Run", SubResource( 16 ), "Run", "Idle", SubResource( 17 ), "Air", "Foward", SubResource( 18 ), "Idle", "Foward", SubResource( 19 ), "Run", "Foward", SubResource( 20 ) ]
 graph_offset = Vector2( -477, -116.677 )
 
-[sub_resource type="AnimationNodeBlendTree" id=17]
+[sub_resource type="AnimationNodeBlendTree" id=22]
 graph_offset = Vector2( -430.5, -24.5 )
-nodes/Animation/node = SubResource( 5 )
+nodes/Animation/node = SubResource( 6 )
 nodes/Animation/position = Vector2( -140, 280 )
-nodes/Fire/node = SubResource( 6 )
+nodes/Fire/node = SubResource( 7 )
 nodes/Fire/position = Vector2( 100, 150 )
-nodes/Movement/node = SubResource( 16 )
+nodes/Movement/node = SubResource( 21 )
 nodes/Movement/position = Vector2( -220, 20 )
 node_connections = [ "output", 0, "Fire", "Fire", 0, "Movement", "Fire", 1, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 8, 24 )
 
-[sub_resource type="Animation" id=20]
-resource_name = "Breathe"
+[sub_resource type="Animation" id=25]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -214,8 +213,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.9, 1.0 ]
 }
 
-[sub_resource type="Animation" id=21]
-resource_name = "Die"
+[sub_resource type="Animation" id=26]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture_scale")
@@ -270,19 +268,19 @@ frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Air = SubResource( 1 )
-anims/Foward = SubResource( 22 )
-anims/Idle = SubResource( 2 )
-anims/Run = SubResource( 3 )
-anims/Shoot = SubResource( 4 )
+anims/Foward = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Run = SubResource( 4 )
+anims/Shoot = SubResource( 5 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 17 )
+tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/Fire/active = false
-parameters/Movement/playback = SubResource( 18 )
+parameters/Movement/playback = SubResource( 23 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource( 19 )
+shape = SubResource( 24 )
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2( 0, -8 )
@@ -296,8 +294,8 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
 autoplay = "Breathe"
-anims/Breathe = SubResource( 20 )
-anims/Die = SubResource( 21 )
+anims/Breathe = SubResource( 25 )
+anims/Die = SubResource( 26 )
 
 [node name="ArmSpawn" type="Position2D" parent="."]
 position = Vector2( 9, -8 )
@@ -327,3 +325,8 @@ stream = ExtResource( 9 )
 
 [node name="Death" type="AudioStreamPlayer" parent="Effects"]
 stream = ExtResource( 10 )
+volume_db = -3.0
+
+[node name="DeathPart2" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource( 12 )
+volume_db = 8.0

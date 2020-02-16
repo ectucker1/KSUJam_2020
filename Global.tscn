@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Fader.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/OpenSans-SemiBold.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/Sfx/Click.wav" type="AudioStream" id=6]
 [ext_resource path="res://UI/Exit.gd" type="Script" id=7]
 [ext_resource path="res://UI/Resume.gd" type="Script" id=8]
+[ext_resource path="res://Assets/music/levelTheme.ogg" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=13]
 size = 20
@@ -286,3 +287,7 @@ stream = ExtResource( 5 )
 
 [node name="Click" type="AudioStreamPlayer" parent="Pause/Resume"]
 stream = ExtResource( 6 )
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 4.0

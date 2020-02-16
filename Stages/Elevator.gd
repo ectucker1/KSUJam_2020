@@ -8,6 +8,7 @@ func _ready():
 func _body_entered(body):
 	if body.is_in_group("player"):
 		$AnimationPlayer.play("Close")
+		$Jingle.play()
 		body.elevator(self)
 
 func advance():

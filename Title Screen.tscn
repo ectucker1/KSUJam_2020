@@ -198,7 +198,7 @@ stream = ExtResource( 4 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 10 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = 8.0
 autoplay = true
