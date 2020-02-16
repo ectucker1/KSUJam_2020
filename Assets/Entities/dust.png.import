@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mop.png-305445b2283776ec9754ab92303356d1.stex"
+path="res://.import/dust.png-3f49ab12ea9258a3a9c2e864cdf8f8be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/mop.png"
-dest_files=[ "res://.import/mop.png-305445b2283776ec9754ab92303356d1.stex" ]
+source_file="res://Assets/Entities/dust.png"
+dest_files=[ "res://.import/dust.png-3f49ab12ea9258a3a9c2e864cdf8f8be.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
