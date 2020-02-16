@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Core/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/Sunsetseeker.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Sfx/Land.wav" type="AudioStream" id=8]
 [ext_resource path="res://Assets/Sfx/Recall.wav" type="AudioStream" id=9]
 [ext_resource path="res://Assets/Sfx/Death.wav" type="AudioStream" id=10]
+[ext_resource path="res://Core/BoundCamera.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Air"
@@ -287,10 +288,7 @@ shape = SubResource( 19 )
 position = Vector2( 0, -8 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
-limit_left = 0
-limit_top = 32
-limit_right = 1600
-limit_bottom = 1568
+script = ExtResource( 11 )
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 0, -2 )
