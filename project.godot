@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="KSUJam_2020"
-run/main_scene="res://TestStage.tscn"
+run/main_scene="res://Title Screen.tscn"
 config/icon="res://icon.png"
 
 [display]
