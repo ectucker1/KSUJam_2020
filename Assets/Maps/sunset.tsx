@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="18" columns="0">
+<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="34" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="32" height="32" source="../Tiles/balconyEdge.png"/>
@@ -45,9 +45,6 @@
  </tile>
  <tile id="8">
   <image width="32" height="32" source="../Tiles/wallBlank.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="0" width="32" height="32"/>
-  </objectgroup>
  </tile>
  <tile id="9">
   <image width="32" height="32" source="../Tiles/wallFront.png"/>
@@ -57,9 +54,6 @@
  </tile>
  <tile id="10">
   <image width="32" height="32" source="../Tiles/windowBlank.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="4" x="0" y="0" width="32" height="32"/>
-  </objectgroup>
  </tile>
  <tile id="11">
   <image width="32" height="32" source="../Tiles/windowFront.png"/>
@@ -102,5 +96,94 @@
  </tile>
  <tile id="19">
   <image width="64" height="64" source="../Tiles/elevatorGlass.png"/>
+ </tile>
+ <tile id="20">
+  <image width="32" height="32" source="../Tiles/blueTop.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="7" y="14" width="17" height="18"/>
+  </objectgroup>
+ </tile>
+ <tile id="21">
+  <image width="32" height="32" source="../Tiles/blueBottom.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="7" y="0" width="17" height="15"/>
+  </objectgroup>
+ </tile>
+ <tile id="22">
+  <image width="32" height="32" source="../Tiles/dangerBottom.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="6" y="0" width="19" height="18"/>
+  </objectgroup>
+ </tile>
+ <tile id="23">
+  <image width="32" height="32" source="../Tiles/dangerTop.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="6" y="15" width="19" height="17"/>
+  </objectgroup>
+ </tile>
+ <tile id="24">
+  <image width="32" height="32" source="../Tiles/marketFloor.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="19" width="32" height="13"/>
+  </objectgroup>
+ </tile>
+ <tile id="25">
+  <image width="32" height="32" source="../Tiles/marketWall.png"/>
+ </tile>
+ <tile id="26">
+  <image width="32" height="32" source="../Tiles/marketWallFull.png"/>
+ </tile>
+ <tile id="27">
+  <image width="32" height="32" source="../Tiles/marketWallMirror.png"/>
+ </tile>
+ <tile id="28">
+  <image width="32" height="32" source="../Tiles/mr.ToothBottom.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3" y="0" width="26" height="17"/>
+  </objectgroup>
+ </tile>
+ <tile id="29">
+  <image width="32" height="32" source="../Tiles/mr.ToothTop.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="3" y="16" width="26" height="16"/>
+  </objectgroup>
+ </tile>
+ <tile id="30">
+  <image width="32" height="32" source="../Tiles/slope.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="32" y="0">
+    <polygon points="0,0 -32,32 0,32"/>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="31">
+  <image width="32" height="32" source="../Tiles/soupBottom.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
+ </tile>
+ <tile id="32">
+  <image width="32" height="32" source="../Tiles/soupTop.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
+ </tile>
+ <tile id="33">
+  <image width="32" height="32" source="../Tiles/yumYumEatsLeft.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
+ </tile>
+ <tile id="34">
+  <image width="32" height="32" source="../Tiles/yumYumEatsMiddle.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
+ </tile>
+ <tile id="35">
+  <image width="32" height="32" source="../Tiles/yumYumEatsRight.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
  </tile>
 </tileset>
