@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Core/PlayerMovement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Entities/Sunsetseeker.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Sfx/Death.wav" type="AudioStream" id=10]
 [ext_resource path="res://Core/BoundCamera.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Sfx/DeathEffect.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Entities/teleport.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Air"
@@ -123,6 +124,50 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=27]
+resource_name = "Warp"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Sprite2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Sprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Warp"
+
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Shoot"
 
@@ -170,15 +215,22 @@ states/Run/position = Vector2( 657.5, 90.6563 )
 transitions = [ "Idle", "Run", SubResource( 12 ), "Idle", "Air", SubResource( 13 ), "Run", "Air", SubResource( 14 ), "Air", "Idle", SubResource( 15 ), "Air", "Run", SubResource( 16 ), "Run", "Idle", SubResource( 17 ), "Air", "Foward", SubResource( 18 ), "Idle", "Foward", SubResource( 19 ), "Run", "Foward", SubResource( 20 ) ]
 graph_offset = Vector2( -477, -116.677 )
 
+[sub_resource type="AnimationNodeOneShot" id=29]
+
 [sub_resource type="AnimationNodeBlendTree" id=22]
-graph_offset = Vector2( -430.5, -24.5 )
+graph_offset = Vector2( -280.875, 103.75 )
 nodes/Animation/node = SubResource( 6 )
 nodes/Animation/position = Vector2( -140, 280 )
+"nodes/Animation 2/node" = SubResource( 28 )
+"nodes/Animation 2/position" = Vector2( 220, 270 )
 nodes/Fire/node = SubResource( 7 )
 nodes/Fire/position = Vector2( 100, 150 )
 nodes/Movement/node = SubResource( 21 )
 nodes/Movement/position = Vector2( -220, 20 )
-node_connections = [ "output", 0, "Fire", "Fire", 0, "Movement", "Fire", 1, "Animation" ]
+nodes/Warp/node = SubResource( 29 )
+nodes/Warp/position = Vector2( 340, 100 )
+nodes/output/position = Vector2( 690, 120 )
+node_connections = [ "output", 0, "Warp", "Fire", 0, "Movement", "Fire", 1, "Animation", "Warp", 0, "Fire", "Warp", 1, "Animation 2" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
@@ -264,7 +316,13 @@ position = Vector2( 4, -8 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 5
-frame = 9
+
+[node name="Sprite2" type="Sprite" parent="Sprite"]
+visible = false
+texture = ExtResource( 13 )
+offset = Vector2( -2, 0 )
+hframes = 3
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Air = SubResource( 1 )
@@ -272,12 +330,14 @@ anims/Foward = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/Run = SubResource( 4 )
 anims/Shoot = SubResource( 5 )
+anims/Warp = SubResource( 27 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/Fire/active = false
 parameters/Movement/playback = SubResource( 23 )
+parameters/Warp/active = false
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 24 )

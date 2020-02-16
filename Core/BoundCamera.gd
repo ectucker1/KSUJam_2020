@@ -1,5 +1,7 @@
 extends Camera2D
 
+onready var shaker = get_node("/root/Global/Shaker")
+
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	var map = get_tree().root.find_node("Tile Layer 1", true, false)
@@ -9,3 +11,6 @@ func _enter_tree():
 	if map.has_meta("end"):
 		limit_right = map.get_meta("end").x
 		limit_bottom = map.get_meta("end").y
+
+func _process(delta):
+	offset = shaker.offset
