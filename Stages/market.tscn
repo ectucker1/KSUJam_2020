@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Maps/market.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Assets/marketBackGround.png" type="Texture" id=2]
 [ext_resource path="res://Core/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Stages/DroneDown.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -23,6 +24,30 @@ adjustment_saturation = 0.68
 [node name="Node2D" type="Node2D"]
 
 [node name="market" parent="." instance=ExtResource( 1 )]
+
+[node name="Drone" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 1377.45, 2816.46 )
+dist = Vector2( 275, 0 )
+
+[node name="Drone2" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 2521.13, 2366.76 )
+dist = Vector2( -217, -64 )
+
+[node name="Drone3" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 1386.7, 1622.81 )
+dist = Vector2( 1000, 0 )
+
+[node name="Drone4" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 1234.95, 1783.81 )
+dist = Vector2( 1250, 0 )
+
+[node name="Drone5" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 2717.3, 1421.09 )
+dist = Vector2( -1154, 0 )
+
+[node name="Drone6" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 2752.46, 2078.06 )
+dist = Vector2( -487, 360 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
