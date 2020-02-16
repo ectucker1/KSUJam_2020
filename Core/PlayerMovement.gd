@@ -126,6 +126,7 @@ func _physics_process(delta: float):
 	if throw_last_pressed < INPUT_RECALL_TIME:
 		if dagger == null:
 			anim_tree["parameters/Fire/active"] = true
+			#get_node("/root/Global/Shaker").shake(0.1, Vector2(2, 2), Vector2(60, 50))
 			throw_last_pressed = INF
 			jump_last_pressed = INF
 			recall_last_pressed = INF
@@ -194,6 +195,7 @@ func _input(event):
 			velocity = Vector2.ZERO
 			get_node("Camera").current = true
 			$Effects/Warp.play()
+			anim_tree["parameters/Warp/active"] = true
 
 func kill():
 	if is_processing():
@@ -202,6 +204,7 @@ func kill():
 		$Effects/Death.play()
 		$Effects/DeathPart2.play()
 		$Light2D/AnimationPlayer.play("Die")
+		get_node("/root/Global/Shaker").shake(0.35, Vector2(3, 3), Vector2(20, 30))
 		set_process(false)
 		set_physics_process(false)
 		set_process_input(false)

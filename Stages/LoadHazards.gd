@@ -10,4 +10,6 @@ func post_import(scene):
 			node.add_to_group("map")
 			node.set_meta("start", bounds.position * 32.0 + Vector2(0.0, 32.0))
 			node.set_meta("end", bounds.end * 32.0 - Vector2(0.0, 32.0))
+			if node.has_meta("custom_z"):
+				node.z_index = int(node.get_meta("custom_z"))
 	return scene

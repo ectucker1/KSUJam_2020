@@ -50,6 +50,7 @@ func _physics_process(delta: float):
 			grav_dir = 1.0
 			if last_collison > MIN_COLLISION_SPACING:
 				$Effects/Bounce.play()
+				get_node("/root/Global/Shaker").shake(0.2, Vector2(2, 2), Vector2(60, 50))
 			$Sprite/AnimationPlayer.play("Dead")
 			last_collison = 0.0
 
