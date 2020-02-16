@@ -19,7 +19,7 @@ glow_strength = 1.03
 glow_blend_mode = 0
 glow_hdr_threshold = 0.47
 adjustment_enabled = true
-adjustment_brightness = 0.6
+adjustment_brightness = 0.47
 adjustment_saturation = 0.7
 
 [node name="Node2D" type="Node2D"]
