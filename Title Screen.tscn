@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/Fonts/ChangaOne-Italic.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Begin.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sfx/Hover.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sfx/Click.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Fonts/OpenSans-SemiBold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Assets/sunset.png" type="Texture" id=6]
+[ext_resource path="res://Assets/music/mainTheme.ogg" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=10]
+size = 24
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 86
@@ -29,18 +36,67 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="Environment" id=11]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.11
+glow_blend_mode = 1
+glow_hdr_threshold = 1.25
+glow_bicubic_upscale = true
+adjustment_enabled = true
+adjustment_brightness = 1.03
+
 [node name="Node2D" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Background" type="ParallaxBackground" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxLayer"]
+position = Vector2( 0, 298.566 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( -196, 0, 512, 96 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Instructions" type="Control" parent="UILayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="CanvasLayer/Control"]
+[node name="Label" type="Label" parent="UILayer/Instructions"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = -263.0
+margin_right = 519.0
+margin_bottom = -50.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Press W to jump
+Use A and D to move
+Click to fire your teleporter
+Left click again to flip its gravity
+Right click to warp to your teleporter
+Press Shift to bring back your teleporter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Control" parent="UILayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="UILayer/Title"]
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 90.0
@@ -49,15 +105,18 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "    Sunset 
 Seeker"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Start" type="Button" parent="CanvasLayer/Control"]
+[node name="Start" type="Button" parent="UILayer/Title"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -218.0
+margin_left = -214.226
 margin_top = -120.0
-margin_right = -50.0
+margin_right = -46.2263
 theme = SubResource( 2 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 6 )
@@ -76,8 +135,18 @@ __meta__ = {
 }
 next = "res://Stages/Maintenance.tscn"
 
-[node name="Hover" type="AudioStreamPlayer" parent="CanvasLayer/Control/Start"]
+[node name="Hover" type="AudioStreamPlayer" parent="UILayer/Title/Start"]
 stream = ExtResource( 3 )
 
-[node name="Click" type="AudioStreamPlayer" parent="CanvasLayer/Control/Start"]
+[node name="Click" type="AudioStreamPlayer" parent="UILayer/Title/Start"]
 stream = ExtResource( 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 8.0
+autoplay = true
