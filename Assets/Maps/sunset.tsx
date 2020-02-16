@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="40" columns="0">
+<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="69" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="32" height="32" source="../Tiles/balconyEdge.png"/>
@@ -203,5 +203,92 @@
  </tile>
  <tile id="41">
   <image width="32" height="32" source="../Tiles/pole.png"/>
+ </tile>
+ <tile id="42">
+  <image width="32" height="32" source="../Tiles/pagotaLeft.png"/>
+ </tile>
+ <tile id="43">
+  <image width="32" height="32" source="../Tiles/pagotaMiddle.png"/>
+ </tile>
+ <tile id="44">
+  <image width="32" height="32" source="../Tiles/pagotaRight.png"/>
+ </tile>
+ <tile id="45">
+  <image width="32" height="32" source="../Tiles/pagotaRoof.png"/>
+ </tile>
+ <tile id="46">
+  <image width="32" height="32" source="../Tiles/pagotaRoofM.png"/>
+ </tile>
+ <tile id="47">
+  <image width="32" height="32" source="../Tiles/pagotaRoofR.png"/>
+ </tile>
+ <tile id="48">
+  <image width="32" height="32" source="../Tiles/pagotaWallLeft.png"/>
+ </tile>
+ <tile id="49">
+  <image width="32" height="32" source="../Tiles/pagotaWallMiddle.png"/>
+ </tile>
+ <tile id="50">
+  <image width="32" height="32" source="../Tiles/pagotaWallRight.png"/>
+ </tile>
+ <tile id="55">
+  <image width="32" height="32" source="../Tiles/pagotaMiddle.png"/>
+ </tile>
+ <tile id="57">
+  <image width="32" height="32" source="../Tiles/pagotaRoof.png"/>
+ </tile>
+ <tile id="58">
+  <image width="32" height="32" source="../Tiles/pagotaRoofM.png"/>
+ </tile>
+ <tile id="59">
+  <image width="32" height="32" source="../Tiles/pagotaRoofR.png"/>
+ </tile>
+ <tile id="63">
+  <image width="32" height="32" source="../Tiles/pagotaWallSideLeft.png"/>
+ </tile>
+ <tile id="64">
+  <image width="32" height="32" source="../Tiles/pagotaWallSideMiddle.png"/>
+ </tile>
+ <tile id="65">
+  <image width="32" height="32" source="../Tiles/pagotaWallSideRight.png"/>
+ </tile>
+ <tile id="66">
+  <image width="32" height="32" source="../Tiles/pagotaLeft.png"/>
+ </tile>
+ <tile id="67">
+  <image width="32" height="32" source="../Tiles/pagotaRight.png"/>
+ </tile>
+ <tile id="68">
+  <image width="32" height="32" source="../Tiles/leftSign.png"/>
+ </tile>
+ <tile id="69">
+  <image width="32" height="32" source="../Tiles/mop.png"/>
+ </tile>
+ <tile id="70">
+  <image width="32" height="32" source="../Tiles/poster.png"/>
+ </tile>
+ <tile id="71">
+  <image width="32" height="32" source="../Tiles/rightSign.png"/>
+ </tile>
+ <tile id="72">
+  <image width="32" height="32" source="../Tiles/toolBox.png"/>
+ </tile>
+ <tile id="73">
+  <image width="32" height="32" source="../Tiles/pagotaWallLeft.png"/>
+ </tile>
+ <tile id="74">
+  <image width="32" height="32" source="../Tiles/pagotaWallRight.png"/>
+ </tile>
+ <tile id="75">
+  <image width="32" height="32" source="../Tiles/pagotaWallSideLeft.png"/>
+ </tile>
+ <tile id="76">
+  <image width="32" height="32" source="../Tiles/pagotaWallSideMiddle.png"/>
+ </tile>
+ <tile id="77">
+  <image width="32" height="32" source="../Tiles/pagotaWallSideRight.png"/>
+ </tile>
+ <tile id="78">
+  <image width="32" height="32" source="../Tiles/pagotaWallMiddle.png"/>
  </tile>
 </tileset>
