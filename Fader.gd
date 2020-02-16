@@ -8,3 +8,6 @@ func fade_to(path):
 
 func next():
 	get_tree().change_scene(next_path)
+	if get_tree().current_scene.name == "Title":
+		get_node("/root/Global/Hints").visible = true
+		get_node("/root/Global/Hints").get_node("AnimationPlayer").play("Begone")

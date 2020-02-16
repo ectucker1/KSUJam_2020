@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/Fonts/ChangaOne-Italic.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Begin.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Fonts/OpenSans-SemiBold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Assets/sunset.png" type="Texture" id=6]
 [ext_resource path="res://Assets/music/mainTheme.ogg" type="AudioStream" id=7]
+[ext_resource path="res://UI/Exit.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -36,6 +37,24 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="Theme" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="DynamicFont" id=17]
+size = 64
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
 [sub_resource type="Environment" id=10]
 background_mode = 4
 glow_enabled = true
@@ -47,7 +66,7 @@ glow_bicubic_upscale = true
 adjustment_enabled = true
 adjustment_brightness = 1.03
 
-[node name="Node2D" type="Node2D"]
+[node name="Title" type="Node2D"]
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -114,9 +133,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -214.226
-margin_top = -120.0
-margin_right = -46.2263
+margin_left = -214.816
+margin_top = -116.506
+margin_right = -46.8157
+margin_bottom = -47.5059
 theme = SubResource( 3 )
 custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 5 )
@@ -133,12 +153,44 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-next = "res://Stages/Maintenance.tscn"
+next = "res://TestStage.tscn"
 
 [node name="Hover" type="AudioStreamPlayer" parent="UILayer/Title/Start"]
 stream = ExtResource( 3 )
 
 [node name="Click" type="AudioStreamPlayer" parent="UILayer/Title/Start"]
+stream = ExtResource( 4 )
+
+[node name="Exit" type="Button" parent="UILayer/Title"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -186.816
+margin_top = -186.541
+margin_right = -18.8157
+margin_bottom = -117.541
+theme = SubResource( 11 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.176471, 0.176471, 0.176471, 1 )
+custom_colors/font_color_pressed = Color( 0.45098, 0.45098, 0.45098, 1 )
+text = "Exit"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hover" type="AudioStreamPlayer" parent="UILayer/Title/Exit"]
+stream = ExtResource( 3 )
+
+[node name="Click" type="AudioStreamPlayer" parent="UILayer/Title/Exit"]
 stream = ExtResource( 4 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

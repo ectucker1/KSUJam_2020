@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Maps/market.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Assets/marketBackGround.png" type="Texture" id=2]
 [ext_resource path="res://Core/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/DroneDown.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/Elevator.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -66,9 +67,15 @@ region_rect = Rect2( 0, 0, 512, 128 )
 position = Vector2( 1502.33, 3095.24 )
 
 [node name="Effects" type="Node2D" parent="."]
+visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Effects"]
 color = Color( 0.752941, 0.654902, 0.0705882, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Effects"]
 environment = SubResource( 1 )
+
+[node name="Elevator" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3009, 1660 )
+z_index = 1
+next = "res://Stages/Sunset.tscn"

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Core/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Maps/demo.tmx" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Elevator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/background.png" type="Texture" id=4]
 
 [sub_resource type="Environment" id=1]
@@ -40,6 +41,7 @@ environment = SubResource( 1 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -1
 motion_scale = Vector2( 0.25, 0.125 )
 motion_offset = Vector2( 0, 128 )
 motion_mirroring = Vector2( 512, 0 )
@@ -49,3 +51,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 512, 128 )
+
+[node name="Elevator" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1248, 53 )
+next = "res://Stages/Maintenance.tscn"

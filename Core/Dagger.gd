@@ -54,6 +54,6 @@ func _physics_process(delta: float):
 			last_collison = 0.0
 
 func _input(event):
-	if event.is_action_pressed("move_throw") and enabled:
+	if event.is_action_pressed("move_flip") and enabled:
 		grav_dir *= -1.0
 		$Effects/Flip.play()

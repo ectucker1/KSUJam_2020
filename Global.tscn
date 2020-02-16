@@ -1,6 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Fader.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/OpenSans-SemiBold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Fonts/ChangaOne-Italic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Pause.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sfx/Hover.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sfx/Click.wav" type="AudioStream" id=6]
+[ext_resource path="res://UI/Exit.gd" type="Script" id=7]
+[ext_resource path="res://UI/Resume.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=13]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=14]
+resource_name = "Begone"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:anchor_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 7 ),
+"transitions": PoolRealArray( 1, 1, 0.31864 ),
+"update": 0,
+"values": [ 1.0, 1.0, 2.0 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeTo"
@@ -32,8 +61,116 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="DynamicFont" id=2]
+size = 72
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Pause"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Fader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.278431 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.517632, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Unpause"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Fader:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.278431 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1.41421 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Theme" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="DynamicFont" id=12]
+size = 64
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
 [node name="Global" type="CanvasLayer"]
 layer = 5
+
+[node name="Hints" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.681091
+margin_bottom = -0.681091
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Hints"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -48.0
+margin_right = 156.0
+margin_bottom = -20.0
+custom_fonts/font = SubResource( 13 )
+text = "ESC for Controls"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hints"]
+anims/Begone = SubResource( 14 )
 
 [node name="Fader" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -48,3 +185,104 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fader"]
 anims/FadeTo = SubResource( 1 )
+
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="Pause"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.901961, 0.705882, 0.364706, 1 )
+text = "Sunset Seeker"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsBrief" type="Label" parent="Pause"]
+margin_left = 50.0
+margin_top = 125.0
+margin_right = 233.0
+margin_bottom = 253.89
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "W                  -   Jump
+A & D           -   Move
+Left Click     -   Fire teleporter
+Left Click     -   Flip teleporter gravity
+Right Click   -   Warp to teleporter
+Shift              -   Recall teleporter
+R                    -   Restart Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pause"]
+anims/Pause = SubResource( 4 )
+anims/Unpause = SubResource( 5 )
+
+[node name="Exit" type="Button" parent="Pause"]
+margin_left = 830.948
+margin_top = 412.382
+margin_right = 998.948
+margin_bottom = 481.382
+theme = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.494118, 0.494118, 0.494118, 1 )
+custom_colors/font_color_pressed = Color( 0.27451, 0.27451, 0.27451, 1 )
+text = "Exit"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hover" type="AudioStreamPlayer" parent="Pause/Exit"]
+stream = ExtResource( 5 )
+
+[node name="Click" type="AudioStreamPlayer" parent="Pause/Exit"]
+stream = ExtResource( 6 )
+
+[node name="Resume" type="Button" parent="Pause"]
+margin_left = 737.39
+margin_top = 493.068
+margin_right = 974.39
+margin_bottom = 562.068
+theme = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.494118, 0.494118, 0.494118, 1 )
+custom_colors/font_color_pressed = Color( 0.27451, 0.27451, 0.27451, 1 )
+text = "Resume"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hover" type="AudioStreamPlayer" parent="Pause/Resume"]
+stream = ExtResource( 5 )
+
+[node name="Click" type="AudioStreamPlayer" parent="Pause/Resume"]
+stream = ExtResource( 6 )
