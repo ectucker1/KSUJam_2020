@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="38" columns="0">
+<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="40" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="32" height="32" source="../Tiles/balconyEdge.png"/>
@@ -197,5 +197,11 @@
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="32" height="32"/>
   </objectgroup>
+ </tile>
+ <tile id="40">
+  <image width="32" height="32" source="../Tiles/upSign.png"/>
+ </tile>
+ <tile id="41">
+  <image width="32" height="32" source="../Tiles/pole.png"/>
  </tile>
 </tileset>

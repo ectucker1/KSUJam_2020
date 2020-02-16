@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/DeathEffect.wav-499809b9c423bf4fb0d38c451ca7045a.sample"
+
+[deps]
+
+source_file="res://Assets/Sfx/DeathEffect.wav"
+dest_files=[ "res://.import/DeathEffect.wav-499809b9c423bf4fb0d38c451ca7045a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
