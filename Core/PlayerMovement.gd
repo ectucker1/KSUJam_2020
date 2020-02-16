@@ -200,7 +200,9 @@ func _input(event):
 func kill():
 	if is_processing():
 		anim_state.travel("Idle")
-		$Sprite.self_modulate = Color.black
+		anim_tree["parameters/Fire/active"] = false
+		anim_tree["parameters/Warp/active"] = false
+		$Sprite.modulate = Color.black
 		$Effects/Death.play()
 		$Effects/DeathPart2.play()
 		$Light2D/AnimationPlayer.play("Die")

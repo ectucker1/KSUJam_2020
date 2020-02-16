@@ -16,3 +16,11 @@ func _input(event):
 				pause()
 			else:
 				unpause()
+	
+	if event.is_action_pressed("dev_skip"):
+		var elevator = get_tree().root.find_node("Elevator", true, false)
+		if elevator != null:
+			elevator.advance()
+	
+	if event.is_action_pressed("dev_fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
