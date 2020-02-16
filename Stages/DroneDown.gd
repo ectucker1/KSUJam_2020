@@ -12,6 +12,10 @@ func _ready():
 	start_pos = position
 	tween_down()
 
+func _process(delta):
+	if not $Drone.playing:
+		$Drone.play()
+
 func tween_down():
 	tween.interpolate_property(self, "position",
 		start_pos, start_pos + dist, dist.length() / SPEED,
