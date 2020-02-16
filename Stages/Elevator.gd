@@ -11,4 +11,4 @@ func _body_entered(body):
 		body.elevator(self)
 
 func advance():
-	get_tree().change_scene(next)
+	get_node("/root/Global/Fader").fade_to(next)

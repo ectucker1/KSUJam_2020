@@ -11,4 +11,4 @@ func hover():
 	$Click.play()
 
 func begin():
-	get_tree().change_scene(next)
+	get_node("/root/Global/Fader").fade_to(next)

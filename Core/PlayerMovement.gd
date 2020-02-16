@@ -53,7 +53,7 @@ func _process(delta):
 			anim_state.travel("Air")
 	
 	if elevator != null:
-		if abs(elevator.global_position.x - global_position.x) > 0.5:
+		if abs(elevator.global_position.x - global_position.x) > 2.0:
 			input_direction.x = sign(elevator.global_position.x - global_position.x)
 		else:
 			input_direction.x = 0.0
@@ -63,10 +63,17 @@ func _process(delta):
 			if has_node("Camera"):
 				var cam = get_node("Camera")
 				var temp_pos = cam.global_position
+				
+				var new_cam = cam.duplicate()
+				remove_child(new_cam)
+				get_parent().add_child(new_cam)
+				new_cam.set_owner(get_parent())
+				new_cam.global_position = temp_pos
+				cam.clear_current()
+				new_cam.current = true
+				
+				cam.clear_current()
 				remove_child(cam)
-				get_parent().add_child(cam)
-				cam.set_owner(get_parent())
-				cam.global_position = temp_pos
 
 func _physics_process(delta: float):
 	# Advance input timers
