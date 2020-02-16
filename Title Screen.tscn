@@ -8,17 +8,19 @@
 [ext_resource path="res://Assets/sunset.png" type="Texture" id=6]
 [ext_resource path="res://Assets/music/mainTheme.ogg" type="AudioStream" id=7]
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 86
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
@@ -28,15 +30,13 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
-[sub_resource type="StyleBoxEmpty" id=9]
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=9]
 size = 64
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="Environment" id=11]
+[sub_resource type="Environment" id=10]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 1.0
@@ -77,7 +77,7 @@ margin_left = 50.0
 margin_top = -263.0
 margin_right = 519.0
 margin_bottom = -50.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Press W to jump
 Use A and D to move
@@ -101,7 +101,7 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 90.0
 margin_bottom = 14.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "    Sunset 
 Seeker"
@@ -117,13 +117,13 @@ anchor_bottom = 1.0
 margin_left = -214.226
 margin_top = -120.0
 margin_right = -46.2263
-theme = SubResource( 2 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
-custom_styles/focus = SubResource( 7 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 4 )
+theme = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.176471, 0.176471, 0.176471, 1 )
@@ -144,7 +144,7 @@ stream = ExtResource( 4 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 11 )
+environment = SubResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

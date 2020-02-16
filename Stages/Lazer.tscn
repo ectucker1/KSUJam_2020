@@ -23,8 +23,9 @@ position = Vector2( 2, 0 )
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 texture = ExtResource( 3 )
-energy = 1.2
+energy = 0.8
 mode = 2
 
 [node name="Hum" type="AudioStreamPlayer2D" parent="."]

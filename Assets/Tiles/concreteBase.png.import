@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slope.png-490d1026533cb42db99bdcde14a6dcc4.stex"
+path="res://.import/concreteBase.png-7935468eae7bdf523851925069dba7b8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/slope.png"
-dest_files=[ "res://.import/slope.png-490d1026533cb42db99bdcde14a6dcc4.stex" ]
+source_file="res://Assets/Tiles/concreteBase.png"
+dest_files=[ "res://.import/concreteBase.png-7935468eae7bdf523851925069dba7b8.stex" ]
 
 [params]
 

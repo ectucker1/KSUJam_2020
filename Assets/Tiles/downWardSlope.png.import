@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slope.png-490d1026533cb42db99bdcde14a6dcc4.stex"
+path="res://.import/downWardSlope.png-a3520afe7acc657ccb4cdafa84c374da.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/slope.png"
-dest_files=[ "res://.import/slope.png-490d1026533cb42db99bdcde14a6dcc4.stex" ]
+source_file="res://Assets/Tiles/downWardSlope.png"
+dest_files=[ "res://.import/downWardSlope.png-a3520afe7acc657ccb4cdafa84c374da.stex" ]
 
 [params]
 

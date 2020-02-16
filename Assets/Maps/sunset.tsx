@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="34" columns="0">
+<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="38" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="32" height="32" source="../Tiles/balconyEdge.png"/>
@@ -82,7 +82,7 @@
  <tile id="16">
   <image width="32" height="32" source="../Tiles/balconyEdgeMirror.png"/>
   <objectgroup draworder="index" id="2">
-   <object id="2" x="7" y="27" width="25" height="5"/>
+   <object id="1" x="7" y="27" width="25" height="5"/>
   </objectgroup>
  </tile>
  <tile id="17">
@@ -99,27 +99,15 @@
  </tile>
  <tile id="20">
   <image width="32" height="32" source="../Tiles/blueTop.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="7" y="14" width="17" height="18"/>
-  </objectgroup>
  </tile>
  <tile id="21">
   <image width="32" height="32" source="../Tiles/blueBottom.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="7" y="0" width="17" height="15"/>
-  </objectgroup>
  </tile>
  <tile id="22">
   <image width="32" height="32" source="../Tiles/dangerBottom.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="6" y="0" width="19" height="18"/>
-  </objectgroup>
  </tile>
  <tile id="23">
   <image width="32" height="32" source="../Tiles/dangerTop.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="6" y="15" width="19" height="17"/>
-  </objectgroup>
  </tile>
  <tile id="24">
   <image width="32" height="32" source="../Tiles/marketFloor.png"/>
@@ -138,15 +126,9 @@
  </tile>
  <tile id="28">
   <image width="32" height="32" source="../Tiles/mr.ToothBottom.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="3" y="0" width="26" height="17"/>
-  </objectgroup>
  </tile>
  <tile id="29">
   <image width="32" height="32" source="../Tiles/mr.ToothTop.png"/>
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="3" y="16" width="26" height="16"/>
-  </objectgroup>
  </tile>
  <tile id="30">
   <image width="32" height="32" source="../Tiles/slope.png"/>
@@ -182,6 +164,36 @@
  </tile>
  <tile id="35">
   <image width="32" height="32" source="../Tiles/yumYumEatsRight.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
+ </tile>
+ <tile id="36">
+  <image width="32" height="32" source="../Tiles/downLeftSlope.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0">
+    <polyline points="0,0 32,32 32,0 0,0"/>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="37">
+  <image width="32" height="32" source="../Tiles/downWardSlope.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0">
+    <polygon points="0,0 32,32 0,32"/>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="38">
+  <image width="32" height="32" source="../Tiles/upRightSlope.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="32">
+    <polyline points="0,0 32,-32 0,-32 0,0"/>
+   </object>
+  </objectgroup>
+ </tile>
+ <tile id="39">
+  <image width="32" height="32" source="../Tiles/concreteBase.png"/>
   <objectgroup draworder="index" id="2">
    <object id="1" x="0" y="0" width="32" height="32"/>
   </objectgroup>
