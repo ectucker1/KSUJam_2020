@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Stages/Sunset.gd" type="Script" id=1]
+[ext_resource path="res://Assets/sunset.png" type="Texture" id=6]
+[ext_resource path="res://Assets/music/mainTheme.ogg" type="AudioStream" id=7]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.11
+glow_blend_mode = 1
+glow_hdr_threshold = 1.25
+glow_bicubic_upscale = true
+adjustment_enabled = true
+adjustment_brightness = 1.03
+
+[sub_resource type="Animation" id=2]
+resource_name = "Begone"
+length = 20.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 20 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "transition"
+} ]
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+next = "res://Title Screen.tscn"
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxLayer"]
+position = Vector2( 36.8247, 228.102 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( -256, 0, 512, 96 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 8.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Begone"
+anims/Begone = SubResource( 2 )
