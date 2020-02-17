@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Core/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Maps/demo.tmx" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Elevator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/background.png" type="Texture" id=4]
 [ext_resource path="res://Stages/DroneDown.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stages/Spotlight.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -68,3 +69,22 @@ dist = Vector2( 500, 0 )
 [node name="Drone3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 572.229, 93.8835 )
 dist = Vector2( 0, 128 )
+
+[node name="Spotlight" parent="." instance=ExtResource( 6 )]
+position = Vector2( 556.266, 740.391 )
+
+[node name="Spotlight2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 816.112, 804.064 )
+dist = Vector2( 0, -64 )
+
+[node name="Spotlight3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1164.23, 147.135 )
+dist = Vector2( 0, -128 )
+
+[node name="Spotlight4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1006.07, 54.5014 )
+dist = Vector2( 0, 128 )
+
+[node name="Spotlight5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 956.371, 1414.97 )
+dist = Vector2( 128, -128 )

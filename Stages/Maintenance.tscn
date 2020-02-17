@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Maps/maintenance.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Core/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Lazer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Stages/Spotlight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Stages/Elevator.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Stages/DroneDown.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/sewerBackGround.png" type="Texture" id=7]
@@ -98,3 +99,7 @@ rotation = 3.14159
 [node name="Lazer3" parent="Lazers" instance=ExtResource( 3 )]
 position = Vector2( 449, 1251 )
 rotation = 1.5708
+
+[node name="Spotlight" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1021.05, 1250.57 )
+dist = Vector2( -128, -128 )

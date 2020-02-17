@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pagotaWallLeft.png-9d5e46948cc5e19262d5960a8b0f4f45.stex"
+path="res://.import/spotlight.png-88473cdbd69305ac7e0d9252bb665f76.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/pagotaWallLeft.png"
-dest_files=[ "res://.import/pagotaWallLeft.png-9d5e46948cc5e19262d5960a8b0f4f45.stex" ]
+source_file="res://Assets/Entities/spotlight.png"
+dest_files=[ "res://.import/spotlight.png-88473cdbd69305ac7e0d9252bb665f76.stex" ]
 
 [params]
 

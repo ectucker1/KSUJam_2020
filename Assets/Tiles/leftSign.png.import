@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pagotaWallLeft.png-9d5e46948cc5e19262d5960a8b0f4f45.stex"
+path="res://.import/leftSign.png-62c78b48d590fec9bc053352321dfafc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/pagotaWallLeft.png"
-dest_files=[ "res://.import/pagotaWallLeft.png-9d5e46948cc5e19262d5960a8b0f4f45.stex" ]
+source_file="res://Assets/Tiles/leftSign.png"
+dest_files=[ "res://.import/leftSign.png-62c78b48d590fec9bc053352321dfafc.stex" ]
 
 [params]
 

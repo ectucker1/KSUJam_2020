@@ -15,7 +15,7 @@ glow_blend_mode = 1
 glow_hdr_threshold = 1.25
 glow_bicubic_upscale = true
 adjustment_enabled = true
-adjustment_brightness = 1.02305
+adjustment_brightness = 0.988321
 adjustment_contrast = 1.1
 
 [sub_resource type="Animation" id=2]
@@ -85,7 +85,7 @@ motion_scale = Vector2( 0, 0 )
 position = Vector2( 36.8247, 228.102 )
 scale = Vector2( 8, 8 )
 texture = ExtResource( 6 )
-offset = Vector2( 0, 0.152672 )
+offset = Vector2( 0, 0.916031 )
 region_enabled = true
 region_rect = Rect2( -256, 0, 512, 96 )
 
@@ -105,10 +105,20 @@ autoplay = true
 autoplay = "Begone"
 anims/Begone = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Silotte" type="Sprite" parent="."]
 self_modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 671.356, 480.495 )
 scale = Vector2( -4, 4 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 5
+frame = 9
+
+[node name="Silotte2" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 671.356, 480.495 )
+scale = Vector2( -4, 4 )
+z_index = 4
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 5

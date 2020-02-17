@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="69" columns="0">
+<tileset version="1.2" tiledversion="1.3.2" name="sunset" tilewidth="64" tileheight="64" tilecount="71" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="32" height="32" source="../Tiles/balconyEdge.png"/>
@@ -82,7 +82,7 @@
  <tile id="16">
   <image width="32" height="32" source="../Tiles/balconyEdgeMirror.png"/>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="7" y="27" width="25" height="5"/>
+   <object id="2" x="7" y="28" width="25" height="4"/>
   </objectgroup>
  </tile>
  <tile id="17">
@@ -206,21 +206,47 @@
  </tile>
  <tile id="42">
   <image width="32" height="32" source="../Tiles/pagotaLeft.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="32" y="32">
+    <polygon points="0,0 0,-21 -14,-21 -32,-29 -32,-11 -12,0"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="43">
   <image width="32" height="32" source="../Tiles/pagotaMiddle.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="2" x="0" y="11" width="32" height="21"/>
+  </objectgroup>
  </tile>
  <tile id="44">
   <image width="32" height="32" source="../Tiles/pagotaRight.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="2" x="0" y="32">
+    <polygon points="0,0 0,-21 13,-21 32,-29 32,-11 12,0"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="45">
   <image width="32" height="32" source="../Tiles/pagotaRoof.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="2" x="0" y="11">
+    <polygon points="0,0 32,-11 32,21 0,21"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="46">
   <image width="32" height="32" source="../Tiles/pagotaRoofM.png"/>
+  <objectgroup draworder="index" id="3">
+   <object id="2" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="47">
   <image width="32" height="32" source="../Tiles/pagotaRoofR.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="2" x="32" y="11">
+    <polygon points="0,0 -32,-11 -32,21 0,21"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="48">
   <image width="32" height="32" source="../Tiles/pagotaWallLeft.png"/>
@@ -233,15 +259,31 @@
  </tile>
  <tile id="55">
   <image width="32" height="32" source="../Tiles/pagotaMiddle.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="11" width="32" height="21"/>
+  </objectgroup>
  </tile>
  <tile id="57">
   <image width="32" height="32" source="../Tiles/pagotaRoof.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="11">
+    <polygon points="0,0 32,-11 32,21 0,21"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="58">
   <image width="32" height="32" source="../Tiles/pagotaRoofM.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="32" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="59">
   <image width="32" height="32" source="../Tiles/pagotaRoofR.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="32" y="11">
+    <polygon points="0,0 -32,-11 -32,21 0,21"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="63">
   <image width="32" height="32" source="../Tiles/pagotaWallSideLeft.png"/>
@@ -254,9 +296,19 @@
  </tile>
  <tile id="66">
   <image width="32" height="32" source="../Tiles/pagotaLeft.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="32" y="32">
+    <polygon points="0,0 0,-21 -14,-21 -32,-29 -32,-11 -12,0"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="67">
   <image width="32" height="32" source="../Tiles/pagotaRight.png"/>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="32">
+    <polygon points="0,0 0,-21 13,-21 32,-29 32,-11 12,0"/>
+   </object>
+  </objectgroup>
  </tile>
  <tile id="68">
   <image width="32" height="32" source="../Tiles/leftSign.png"/>
@@ -290,5 +342,11 @@
  </tile>
  <tile id="78">
   <image width="32" height="32" source="../Tiles/pagotaWallMiddle.png"/>
+ </tile>
+ <tile id="79">
+  <image width="32" height="32" source="../Tiles/badManBottom.png"/>
+ </tile>
+ <tile id="80">
+  <image width="32" height="32" source="../Tiles/badManTop.png"/>
  </tile>
 </tileset>

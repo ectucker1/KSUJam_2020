@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Maps/market.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Assets/marketBackGround.png" type="Texture" id=2]
 [ext_resource path="res://Core/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/DroneDown.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Stages/Elevator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stages/Spotlight.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -18,13 +19,14 @@ glow_blend_mode = 0
 glow_hdr_threshold = 0.4
 glow_bicubic_upscale = true
 adjustment_enabled = true
-adjustment_brightness = 0.69
+adjustment_brightness = 0.55
 adjustment_contrast = 1.13
 adjustment_saturation = 0.68
 
 [node name="Node2D" type="Node2D"]
 
 [node name="market" parent="." instance=ExtResource( 1 )]
+z_index = 1
 
 [node name="Drone" parent="market" instance=ExtResource( 4 )]
 position = Vector2( 1377.45, 2816.46 )
@@ -38,13 +40,55 @@ dist = Vector2( -217, -64 )
 position = Vector2( 1386.7, 1622.81 )
 dist = Vector2( 1000, 0 )
 
+[node name="Drone9" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 2354.17, 1725.69 )
+dist = Vector2( -1000, 0 )
+
 [node name="Drone4" parent="market" instance=ExtResource( 4 )]
-position = Vector2( 1234.95, 1783.81 )
+position = Vector2( 1233.14, 1783.81 )
 dist = Vector2( 1250, 0 )
+
+[node name="Drone10" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 2218.67, 1845.18 )
+dist = Vector2( -1250, 0 )
+
+[node name="Spotlight2" parent="market" instance=ExtResource( 6 )]
+position = Vector2( 1570.17, 2635.27 )
+
+[node name="Spotlight6" parent="market" instance=ExtResource( 6 )]
+position = Vector2( 856.879, 2786.68 )
+dist = Vector2( 300, 0 )
+
+[node name="Spotlight5" parent="market" instance=ExtResource( 6 )]
+position = Vector2( 976.414, 2088.64 )
+dist = Vector2( 0, -128 )
+
+[node name="Drone7" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 1150.49, 1941.02 )
+dist = Vector2( 0, -250 )
+
+[node name="Spotlight" parent="market" instance=ExtResource( 6 )]
+position = Vector2( 1993.57, 2096.56 )
+
+[node name="Spotlight3" parent="market" instance=ExtResource( 6 )]
+position = Vector2( 2778.51, 1564.16 )
+dist = Vector2( 0, 128 )
+
+[node name="Spotlight4" parent="market" instance=ExtResource( 6 )]
+position = Vector2( 2678.2, 2723.51 )
+dist = Vector2( -196, 0 )
+
+[node name="Drone11" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 1150.49, 1941.02 )
+dist = Vector2( 0, -250 )
 
 [node name="Drone5" parent="market" instance=ExtResource( 4 )]
 position = Vector2( 2717.3, 1421.09 )
 dist = Vector2( -1154, 0 )
+
+[node name="Drone8" parent="market" instance=ExtResource( 4 )]
+position = Vector2( 1387.02, 1343.48 )
+dist = Vector2( 1154, 0 )
 
 [node name="Drone6" parent="market" instance=ExtResource( 4 )]
 position = Vector2( 2752.46, 2078.06 )
@@ -65,17 +109,17 @@ region_rect = Rect2( 0, 0, 512, 128 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1502.33, 3095.24 )
+z_index = 1
 
 [node name="Effects" type="Node2D" parent="."]
-visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Effects"]
-color = Color( 0.752941, 0.654902, 0.0705882, 1 )
+color = Color( 0.054902, 0.360784, 0.498039, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Effects"]
 environment = SubResource( 1 )
 
 [node name="Elevator" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3009, 1660 )
+position = Vector2( 976, 1396 )
 z_index = 1
 next = "res://Stages/Sunset.tscn"

@@ -111,10 +111,6 @@ __meta__ = {
 [node name="Title" type="Control" parent="UILayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.08118
-margin_top = 10.883
-margin_right = 4.08118
-margin_bottom = 10.883
 __meta__ = {
 "_edit_use_anchors_": false
 }
